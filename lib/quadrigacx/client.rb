@@ -14,14 +14,15 @@ module QuadrigaCX
     # options[:api_key]
     # options[:api_secret]
     #
-    def initialize options={}
-      unless options.kind_of?(Hash)
-        raise ArgumentError, "Options hash required"
+    def initialize options
+      options ||= QuadrigaCX.configuration
+      unless options.kind_of?(QuadrigaCX::Configuration)
+        raise ArgumentError, "Options required"
       end
 
-      @client_id  = options[:client_id]
-      @api_key    = options[:api_key]
-      @api_secret = options[:api_secret]
+      @client_id  = options.client_id
+      @api_key    = options.api_key
+      @api_secret = options.api_secret
     end
   end
 end
