@@ -14,9 +14,9 @@ module QuadrigaCX
     # options[:api_key]
     # options[:api_secret]
     #
-    def initialize options
+    def initialize
       options ||= QuadrigaCX.configuration
-      unless options.kind_of?(QuadrigaCX::Configuration)
+      unless options.client_id && options.api_key && options.api_secret
         raise ArgumentError, "Options required"
       end
 
